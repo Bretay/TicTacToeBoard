@@ -164,6 +164,37 @@ TEST(TicTacToeBoardTest, getWinnerHorizontalX0) {
   ASSERT_EQ(ticcy.getWinner(), Piece::X);
 }
 
+TEST(TicTacToeBoardTest, getWinnerHorizontalX1) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(2, 1);
+  ASSERT_EQ(ticcy.getWinner(), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getWinnerHorizontalX2) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 2);
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(2, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getWinnerHorizontalO0) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(0, 2);
+  ticcy.placePiece(2, 0);
+  ASSERT_EQ(ticcy.getWinner(), Piece::O);
+}
+
 TEST(TicTacToeBoardTest, getWinnerHorizontalO1) {
   TicTacToeBoard ticcy;
   ticcy.placePiece(0, 0);
@@ -172,6 +203,59 @@ TEST(TicTacToeBoardTest, getWinnerHorizontalO1) {
   ticcy.placePiece(1, 1);
   ticcy.placePiece(0, 2);
   ticcy.placePiece(2, 1);
+  ASSERT_EQ(ticcy.getWinner(), Piece::O);
+}
+
+TEST(TicTacToeBoardTest, getWinnerHorizontalO2) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(0, 2);
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(2, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::O);
+}
+
+TEST(TicTacToeBoardTest, getWinnerDiagonalX0) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(2, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getWinnerDiagonalX1) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(2, 0);
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(0, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getWinnerDiagonalO0) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(2, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::O);
+}
+
+TEST(TicTacToeBoardTest, getWinnerDiagonalO1) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(2, 0);
+  ticcy.placePiece(1, 2);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(0, 2);
   ASSERT_EQ(ticcy.getWinner(), Piece::O);
 }
 
