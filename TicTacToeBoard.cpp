@@ -70,6 +70,8 @@ Piece TicTacToeBoard::getPiece(int row, int column)
 **/
 Piece TicTacToeBoard::getWinner()
 {
+  Piece starter;
+  bool cont;
   // Check for unfinished board
   for (int i = 0; i < BOARDSIZE; ++i) {
     for (int j = 0; j < BOARDSIZE; ++j) {
@@ -79,9 +81,9 @@ Piece TicTacToeBoard::getWinner()
     }
   }
   // Check verticals
-  for (int i = 0; i < BOARDSIZE, ++i) {
-    Piece starter = getPiece(i, 0);
-    bool cont = true;
+  for (int i = 0; i < BOARDSIZE; ++i) {
+    starter = getPiece(i, 0);
+    cont = true;
     for (int j = 1; j < BOARDSIZE; ++j) {
       if (starter != getPiece(i, j)) {
         cont = false;
@@ -92,9 +94,9 @@ Piece TicTacToeBoard::getWinner()
     }
   }
   // Check horizontals
-  for (int i = 0; i < BOARDSIZE, ++i) {
-    Piece starter = getPiece(0, i);
-    bool cont = true;
+  for (int i = 0; i < BOARDSIZE; ++i) {
+    starter = getPiece(0, i);
+    cont = true;
     for (int j = 1; j < BOARDSIZE; ++j) {
       if (starter != getPiece(j, i)) {
         cont = false;
@@ -105,8 +107,8 @@ Piece TicTacToeBoard::getWinner()
     }
   }
   // Check diagonals
-  Piece starter = getPiece(0, 0)
-  bool cont = true;
+  starter = getPiece(0, 0);
+  cont = true;
   for (int i = 1; i < BOARDSIZE; ++i) {
     if (starter != getPiece(i, i)) {
       cont = false;
