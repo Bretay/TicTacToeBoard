@@ -76,21 +76,38 @@ Piece TicTacToeBoard::getWinner()
   for (int i = 0; i < BOARDSIZE; ++i) {
     starter = getPiece(i, 0);
     cont = true;
-    for (int j = 1; j < BOARDSIZE; ++j) {
-      if (starter != getPiece(i, j)) {
-        cont = false;
+    if (starter != Piece::Blank) {
+      for (int j = 1; j < BOARDSIZE; ++j) {
+        if (starter != getPiece(i, j)) {
+          cont = false;
+        }
       }
-    }
-    if (cont) {
-      return starter;
+      if (cont) {
+        return starter;
+      }
     }
   }
   // Check horizontals
   for (int i = 0; i < BOARDSIZE; ++i) {
     starter = getPiece(0, i);
     cont = true;
-    for (int j = 1; j < BOARDSIZE; ++j) {
-      if (starter != getPiece(j, i)) {
+    if (starter != Piece::Blank) {
+      for (int j = 1; j < BOARDSIZE; ++j) {
+        if (starter != getPiece(j, i)) {
+          cont = false;
+        }
+      }
+      if (cont) {
+        return starter;
+      }
+    }
+  }
+  // Check diagonals
+  starter = getPiece(0, 0);
+  cont = true;
+  if (starter != Piece::Blank) {
+    for (int i = 1; i < BOARDSIZE; ++i) {
+      if (starter != getPiece(i, i)) {
         cont = false;
       }
     }
@@ -98,26 +115,17 @@ Piece TicTacToeBoard::getWinner()
       return starter;
     }
   }
-  // Check diagonals
-  starter = getPiece(0, 0);
-  cont = true;
-  for (int i = 1; i < BOARDSIZE; ++i) {
-    if (starter != getPiece(i, i)) {
-      cont = false;
-    }
-  }
-  if (cont) {
-    return starter;
-  }
   starter = getPiece(0, BOARDSIZE);
   cont = true;
-  for (int i = 1; i < BOARDSIZE; ++i) {
-    if (starter != getPiece(i, BOARDSIZE - i)) {
-      cont = false;
+  if (starter != Piece::Blank) {
+    for (int i = 1; i < BOARDSIZE; ++i) {
+      if (starter != getPiece(i, BOARDSIZE - i)) {
+        cont = false;
+      }
     }
-  }
-  if (cont) {
-    return starter;
+    if (cont) {
+      return starter;
+    }
   }
   // Check for unfinished board
   for (int i = 0; i < BOARDSIZE; ++i) {
