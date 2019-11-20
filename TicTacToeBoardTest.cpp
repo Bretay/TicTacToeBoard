@@ -90,3 +90,45 @@ TEST(TicTacToeBoardTest, getValidO) {
   ticcy.placePiece(1, 1);
   ASSERT_EQ(ticcy.getPiece(1, 1), Piece::O);
 }
+
+TEST(TicTacToeBoardTest, getWinnerVerticalX) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(0, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getWinnerVerticalO) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(2, 1);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(0, 2);
+  ticcy.placePiece(1, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::O);
+}
+
+TEST(TicTacToeBoardTest, getWinnerUnfinished) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 1);
+  ASSERT_EQ(ticcy.getWinner(), Piece::Invalid);
+}
+
+TEST(TicTacToeBoardTest, getWinnerCatsGame) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(0, 1);
+  ticcy.placePiece(0, 2);
+  ticcy.placePiece(1, 0);
+  ticcy.placePiece(1, 1);
+  ticcy.placePiece(2, 2);
+  ticcy.placePiece(2, 1);
+  ticcy.placePiece(2, 0);
+  ticcy.placePiece(1, 2);
+  ASSERT_EQ(ticcy.getWinner(), Piece::Blank);
+}
