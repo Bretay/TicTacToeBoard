@@ -115,11 +115,11 @@ Piece TicTacToeBoard::getWinner()
       return starter;
     }
   }
-  starter = getPiece(0, BOARDSIZE);
+  starter = getPiece(0, BOARDSIZE - 1);
   cont = true;
   if (starter != Piece::Blank) {
     for (int i = 1; i < BOARDSIZE; ++i) {
-      if (starter != getPiece(i, BOARDSIZE - i)) {
+      if (starter != getPiece(i, BOARDSIZE - 1 - i)) {
         cont = false;
       }
     }
