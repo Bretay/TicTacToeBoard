@@ -31,3 +31,62 @@ TEST(TicTacToeBoardTest, toggleY) {
   ticcy.toggleTurn();
   ASSERT_EQ(ticcy.toggleTurn(), Piece::X);
 }
+
+TEST(TicTacToeBoardTest, placeValidX) {
+  TicTacToeBoard ticcy;
+  ASSERT_EQ(ticcy.placePiece(0, 0), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, placeValidO) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ASSERT_EQ(ticcy.placePiece(1, 1), Piece::O);
+}
+
+TEST(TicTacToeBoardTest, placeInvalidLessX) {
+  TicTacToeBoard ticcy;
+  ASSERT_EQ(ticcy.placePiece(-1, -1), Piece::Invalid);
+}
+
+TEST(TicTacToeBoardTest, placeInvalidLessO) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ASSERT_EQ(ticcy.placePiece(-1, -1), Piece::Invalid);
+}
+
+TEST(TicTacToeBoardTest, placeInvalidMoreX) {
+  TicTacToeBoard ticcy;
+  ASSERT_EQ(ticcy.placePiece(3, 3), Piece::Invalid);
+}
+
+TEST(TicTacToeBoardTest, placeInvalidMoreO) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ASSERT_EQ(ticcy.placePiece(3, 3), Piece::Invalid);
+}
+
+TEST(TicTacToeBoardTest, placeOverX) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 1);
+  ASSERT_EQ(ticcy.placePiece(1, 1), Piece::O);
+}
+
+TEST(TicTacToeBoardTest, placeOverO) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ASSERT_EQ(ticcy.placePiece(0, 0), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getValidX) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ASSERT_EQ(ticcy.getPiece(0, 0), Piece::X);
+}
+
+TEST(TicTacToeBoardTest, getValidO) {
+  TicTacToeBoard ticcy;
+  ticcy.placePiece(0, 0);
+  ticcy.placePiece(1, 1);
+  ASSERT_EQ(ticcy.getPiece(1, 1), Piece::O);
+}
