@@ -22,10 +22,12 @@ TEST(TicTacToeBoardTest, unitTestName)
 */
 
 TEST(TicTacToeBoardTest, toggleX) {
-  ASSERT_EQ(toggleTurn(), Piece::O);
+  TicTacToeBoard ticcy;
+  ASSERT_EQ(ticcy.toggleTurn(), Piece::O);
 }
 
 TEST(TicTacToeBoardTest, toggleY) {
-  toggleTurn();
-  ASSERT_EQ(toggleTurn(), Piece::X);
+  TicTacToeBoard ticcy;
+  ticcy.toggleTurn();
+  ASSERT_EQ(ticcy.toggleTurn(), Piece::X);
 }
