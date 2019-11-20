@@ -72,14 +72,6 @@ Piece TicTacToeBoard::getWinner()
 {
   Piece starter;
   bool cont;
-  // Check for unfinished board
-  for (int i = 0; i < BOARDSIZE; ++i) {
-    for (int j = 0; j < BOARDSIZE; ++j) {
-      if (getPiece(i, j) == Piece::Blank) {
-        return Piece::Invalid;
-      }
-    }
-  }
   // Check verticals
   for (int i = 0; i < BOARDSIZE; ++i) {
     starter = getPiece(i, 0);
@@ -126,6 +118,14 @@ Piece TicTacToeBoard::getWinner()
   }
   if (cont) {
     return starter;
+  }
+  // Check for unfinished board
+  for (int i = 0; i < BOARDSIZE; ++i) {
+    for (int j = 0; j < BOARDSIZE; ++j) {
+      if (getPiece(i, j) == Piece::Blank) {
+        return Piece::Invalid;
+      }
+    }
   }
   return Piece::Blank;
 }
